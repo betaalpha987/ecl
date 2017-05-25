@@ -7,11 +7,15 @@
 $(document).ready(function(){
   $("button").click(function(){
     $.getJSON("Test-Data.json", function(result){
-      alert(result);
-        $.each(result, function(i, field){
-            console.log(field);
-            $("div").append(field + " ");
-        });
+      var items = [];
+      $.each( data, function( key, val ) {
+        items.push( "<li id='" + key + "'>" + val + "</li>" );
+      });
+    
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "body" );
     });
   });
 });
