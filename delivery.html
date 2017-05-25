@@ -6,17 +6,27 @@
 <script>
 $(document).ready(function(){
   $("button").click(function(){
-    $.getJSON("Test-Data.json", function(result){
-      var items = [];
-      $.each( data, function( key, val ) {
-        items.push( "<li id='" + key + "'>" + val + "</li>" );
-      });
-    
-      $( "<ul/>", {
-        "class": "my-new-list",
-        html: items.join( "" )
-      }).appendTo( "body" );
-    });
+// Assign handlers immediately after making the request,
+// and remember the jqxhr object for this request
+var jqxhr = $.getJSON( "Test-Data.json", function() {
+  console.log( "success" );
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+ 
+// Perform other work here ...
+ 
+// Set another completion function for the request above
+jqxhr.complete(function() {
+  console.log( "second complete" );
+});
   });
 });
 </script>
