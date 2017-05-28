@@ -205,10 +205,18 @@
             });
         });
 
+        function toggleDetails(id) {
+            trDetails = $(id);
+            trDetails.css("display", trDetails.css("display") === "none" ? "table-row" : "none" ); 
+        }
+
         function longMonth(dt) {
             var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
                 return (dt.getDate() + " " + month[dt.getMonth()] + " " + dt.getFullYear());
             }
+        function shortMonth(dt) {
+            return (dt.getDate() + "/" + dt.getMonth()+1 + "/" + dt.getFullYear());
+        }
 
         function populateTable(data) {
             var htmlInsert = "";
@@ -216,11 +224,14 @@
                 
                 e.quoteDate = new Date(e.quoteDate);
                 e.statusDate = new Date(e.statusDate);
-                console.log(e.quoteDate,longMonth(e.quoteDate));
                 htmlInsert +=
                     `
                         <tr>
-                            <th scope="row"><i class="fa fa-plus-circle" aria-hidden="true"></i></th>
+                            <th scope="row">
+                                <a onclick="toggleDetails('#tr${e.quoId}')">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                </a>
+                            </th>
                             <td>${longMonth(e.quoteDate)}</td>
                             <td>${e.quoId}</td>
                             <td>${e.clientName}</td>
@@ -229,6 +240,111 @@
                             <td>${e.vehicleDescription}</td>
                             <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
                         </tr>
+                        <tr id="tr${e.quoId}" style="display: none;">
+                            <td colspan="8">
+                                <div class="row">
+                                    <div class="col"> 
+                                        Order summary
+                                        <hr>
+                                        Confirm Delivery
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <form class="form-inline">
+                                        <div class="col-5">
+                                            <div class="form-group row">
+                                                <label for="drivername" class="col-4">Driver Name</label>
+                                                <div class="col-8">
+                                                    <input type="text" required class="form-control" id="drivername">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="delivdate" class="col-4">Est. Delivery Date</label>
+                                                <div class="col-8">
+                                                        <input type="date" required class="form-control" id="delivdate">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-4">In Stock</label>
+                                                <div class="col-2">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="instock" id="instock1" value="No" checked>
+                                                            No
+                                                    </label>
+                                                </div>
+                                                <div class="col-2">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="instock" id="instock2" value="Yes">
+                                                            Yes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-4">Vehicle Delivered</label>
+                                                <div class="col-2">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered1" value="No" checked>
+                                                            No
+                                                    </label>
+                                                </div>
+                                                <div class="col-2">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered2" value="Yes">
+                                                            Yes
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="regnum" class="col-4">Registration Number</label>
+                                                <div class="col-8">
+                                                        <input type="text" required class="form-control" id="regnum">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="vinnum" class="col-4">Vin Number</label>
+                                                <div class="col-8">
+                                                    <input type="text" required class="form-control" id="vinnum">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-5">
+                                            <div class="form-group row">
+                                                <label for="regdate" class="col-4">Registration Date</label>
+                                                <div class="col-8">
+                                                    <input type="date" required class="form-control" id="regdate">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="taxexpdate" class="col-4">Tax Expiry Date</label>
+                                                <div class="col-8">
+                                                    <input type="date" required class="form-control" id="taxexpdate">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="actdelivdate" class="col-4">Actual Delivery Date</label>
+                                                <div class="col-8">
+                                                    <input type="date" required class="form-control" id="actdeldate">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="endcontract" class="col-4">End Of Contract</label>
+                                                <div class="col-8">
+                                                    <input type="date" required class="form-control" id="endcontract">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-2">
+                                            <button type="submit">Confirm Delivery</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
                     `;
             });
 
