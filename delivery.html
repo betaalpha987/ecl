@@ -1,28 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Car Benefit Solutions: Task Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        // Assign handlers immediately after making the request,
-        // and remember the jqxhr object for this request
-        var jGet = $.getJSON( "https://betaalpha987.github.io/cbs/Test-Data.json").always(function() {
-            // if (jGet.status !== 200) console.error(jGet.statusText);
-            console.log(jGet);
-            var delivData = JSON.parse(jGet.responseText);
-            console.log(delivData);
-        });
-    });
-});
-</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src="https://use.fontawesome.com/c18c5c6433.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
-
+    <div class="page-holder">
+    
+        <div class="container">    
+            <div class="row">
+                <div class="col-sm-12 top-banner">
+                    <div class="banner-text">
+                        <h1>Task Management</h1>
+                    </div>               
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12"> 
+                    <form class="search-form form-inline">
+                        <input class="form-control" type="text" placeholder="Search">
+                        <button class="btn btn-link" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            <!--Later the lines after the header should be procedurally generated-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Date</th>
+                                <th>Quote Number</th>
+                                <th>Dealer</th>
+                                <th>Name</th>
+                                <th>Registration Number</th>
+                                <th>Vehicle</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><i class="fa fa-plus-circle" aria-hidden="true"></i></th>
+                                <td>30 May 1111</td>
+                                <td>12346545</td>
+                                <td></td>
+                                <td>Mr mr mrrr</td>
+                                <td>de5 6thy</td>
+                                <td>Alfa Romeo or stuff</td>
+                                <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 <button>Get External Content</button>
 
+
+    <script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            // Assign handlers immediately after making the request,
+            // and remember the jqxhr object for this request
+            var jGet = $.getJSON( "https://betaalpha987.github.io/cbs/Test-Data.json").always(function() {
+                // if (jGet.status !== 200) console.error(jGet.statusText);
+                console.log(jGet);
+                var delivData = JSON.parse(jGet.responseText);
+                console.log(delivData);
+            });
+        });
+    });
+    </script>
 </body>
 </html>
