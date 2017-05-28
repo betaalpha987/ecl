@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
@@ -50,7 +53,16 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="delivTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<button>Get External Content</button>
+
+<!--
                             <tr>
                                 <th scope="row"><i class="fa fa-plus-circle" aria-hidden="true"></i></th>
                                 <td>30 May 1111</td>
@@ -175,29 +187,57 @@
                                 <td>Ford Ka</td>
                                 <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
                             </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-<button>Get External Content</button>
+-->
 
 
     <script>
-    $(document).ready(function(){
-        $("button").click(function(){
-            // Assign handlers immediately after making the request,
-            // and remember the jqxhr object for this request
+
+        $(document).ready(function(){
+
             var jGet = $.getJSON( "https://betaalpha987.github.io/cbs/Test-Data.json").always(function() {
-                // if (jGet.status !== 200) console.error(jGet.statusText);
-                console.log(jGet);
+                if (jGet.status !== 200) {
+                    alert("Error " + jGet.status + ": " + jGet.statusText);
+                    return;
+                }
+                // console.log(jGet);
                 var delivData = JSON.parse(jGet.responseText);
-                console.log(delivData);
+                populateTable(delivData);
             });
         });
-    });
+
+        function longMonth(dt) {
+            var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                return (dt.getDate() + " " + month[dt.getMonth()] + " " + dt.getFullYear());
+            }
+
+        function populateTable(data) {
+            var htmlInsert = "";
+            data.forEach(function(e) {
+                
+                e.quoteDate = new Date(e.quoteDate);
+                e.statusDate = new Date(e.statusDate);
+                console.log(e.quoteDate,longMonth(e.quoteDate));
+                htmlInsert +=
+                    `
+                        <tr>
+                            <th scope="row"><i class="fa fa-plus-circle" aria-hidden="true"></i></th>
+                            <td>${longMonth(e.quoteDate)}</td>
+                            <td>${e.quoId}</td>
+                            <td>${e.clientName}</td>
+                            <td>${e.driverName}</td>
+                            <td>${e.regNumber}</td>
+                            <td>${e.vehicleDescription}</td>
+                            <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
+                        </tr>
+                    `;
+            });
+
+            $("#delivTable").html(htmlInsert);
+
+        }
+
+
+
     </script>
 </body>
 </html>
