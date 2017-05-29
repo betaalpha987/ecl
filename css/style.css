@@ -76,9 +76,14 @@ div, tr, th, td {
     color: white;
     background-color: #969696;
     border-right: 1px solid white;
-    width: 11.11111%; }
+    width: 11.11111%;
+    cursor: pointer; }
+  .table-nav th:hover {
+    background-color: #bbb; }
   .table-nav .active-tab {
     background-color: #db052c; }
+  .table-nav .active-tab:hover {
+    background-color: #f77; }
 
 .table-delivery th {
   color: white;
@@ -127,4 +132,5 @@ div, tr, th, td {
   background-color: #db052c;
   color: white;
   border: 0;
-  border-radius: 5px; }
+  border-radius: 5px;
+  cursor: pointer; }

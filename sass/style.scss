@@ -91,9 +91,16 @@ div,tr,th,td {
     background-color: #969696;
     border-right: 1px solid white;
     width: (100% / 9);
+    cursor: pointer;
+  }
+    th:hover {
+    background-color: #bbb;
   }
   .active-tab {
     background-color: #db052c;
+  }
+  .active-tab:hover {
+    background-color: #f77;
   }
 }
 
@@ -103,7 +110,7 @@ div,tr,th,td {
     background-color: #db052c;
   }
   th:not(:first-child) {
-    border-right:1px solid white;    
+    border-right:1px solid white;
   }
   tr {
     background-color: #e3e3e3;
@@ -162,4 +169,5 @@ div,tr,th,td {
   color: white;
   border: 0;
   border-radius: 5px;
+  cursor: pointer;
 }

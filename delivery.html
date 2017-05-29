@@ -56,15 +56,15 @@
                     <table class="table table-nav">
                         <thead>
                             <tr>
-                                <th class="text-center">Quotation Authorized<br>[2]</th>
-                                <th class="text-center">Confirm Costs<br>[12]</th>
-                                <th class="text-center">Awaiting Agreement<br>[8]</th>
-                                <th class="text-center">Confirm Vehicle Ordered<br>[10]</th>
-                                <th class="text-center active-tab">Confirm Delivery<br>[9]</th>
-                                <th class="text-center">Vehicle Delivered<br>[5]</th>
-                                <th class="text-center">PIF<br>[2]</th>
-                                <th class="text-center">Awaiting Suspend<br>[1]</th>
-                                <th class="text-center">Delivery Complete<br>[9]</th>
+                                <th id="tNav0" class="text-center" onclick="switchtNav(0)">Quotation Authorized<br>[2]</th>
+                                <th id="tNav1" class="text-center" onclick="switchtNav(1)">Confirm Costs<br>[12]</th>
+                                <th id="tNav2" class="text-center" onclick="switchtNav(2)">Awaiting Agreement<br>[8]</th>
+                                <th id="tNav3" class="text-center" onclick="switchtNav(3)">Confirm Vehicle Ordered<br>[10]</th>
+                                <th id="tNav4" class="text-center active-tab" onclick="switchtNav(4)">Confirm Delivery<br>[9]</th>
+                                <th id="tNav5" class="text-center" onclick="switchtNav(5)">Vehicle Delivered<br>[5]</th>
+                                <th id="tNav6" class="text-center" onclick="switchtNav(6)">PIF<br>[2]</th>
+                                <th id="tNav7" class="text-center" onclick="switchtNav(7)">Awaiting Suspend<br>[1]</th>
+                                <th id="tNav8" class="text-center" onclick="switchtNav(8)">Delivery Complete<br>[9]</th>
                             </tr>
                         </thead>
                     </table>
@@ -95,6 +95,8 @@
 
     <script>
 
+        var tNavs = [];
+
         $(document).ready(function(){
 
             var jGet = $.getJSON( "https://betaalpha987.github.io/cbs/Test-Data.json").always(function() {
@@ -105,7 +107,20 @@
                 var delivData = JSON.parse(jGet.responseText);
                 populateTable(delivData);
             });
+
+            // Find all table nav tabs
+            for (var i=0; i < 9; i++) {
+                tNavs[i] = $("#tNav"+i);
+            }
         });
+
+        function switchtNav(i) {
+            tNavs.forEach(function(elem) {
+                elem.removeClass("active-tab");
+            });
+            tNavs[i].addClass("active-tab");
+        }
+
 
         function toggleDetails(id) {
             trDetails = $(id);
@@ -153,7 +168,7 @@
                     `
                         <tr>
                             <td>
-                                <a onclick="toggleDetails('#tr${e.quoId}')">
+                                <a onclick="toggleDetails('#tr${e.quoId}')" style="cursor: pointer">
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 </a>
                             </td>
@@ -165,7 +180,7 @@
                             <td>${e.vehicleDescription}</td>
                             <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
                         </tr>
-                        <tr class="subform" id="tr${e.quoId}" style="display: table-row;">
+                        <tr class="subform" id="tr${e.quoId}" style="display: none;">
                             <td colspan="8">
                                 <div class="row subform-header-row">
                                     <div class="col" class="subform-heading-upper">
