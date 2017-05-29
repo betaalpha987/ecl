@@ -47,4 +47,5 @@ Temporary Items
 .apdisk
 
 # My git ignores
-sass-cache
+.sass-cache/
+.vscode/
