@@ -1,10 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Catamaran");
 body {
-  font-family: 'Catamaran', sans-serif; }
+  font-family: 'Catamaran', sans-serif;
+  font-size: 0.8rem; }
 
-.page-holder {
-  max-width: 1280px;
-  margin: 0 auto 0 auto; }
+.login-bar {
+  background-color: black;
+  color: white; }
+  .login-bar a:link, .login-bar a:visited {
+    color: white;
+    padding: 0 10px; }
+  .login-bar a:hover {
+    color: lightblue;
+    padding: 0 10px; }
 
 .top-banner {
   margin-top: 80px;
@@ -15,7 +22,6 @@ body {
   align-items: center; }
 
 .banner-text {
-  width: 400px;
   margin-left: 2vw;
   padding: 5px;
   color: white;
