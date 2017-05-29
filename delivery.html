@@ -51,10 +51,28 @@
                     </form>
                 </div>
             </div>
-            <!--Later the lines after the header should be procedurally generated-->
+            <div class="row">
+                <div class="col-sm-12 table-nav-col">
+                    <table class="table table-nav">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Quotation Authorized<br>[2]</th>
+                                <th class="text-center">Confirm Costs<br>[12]</th>
+                                <th class="text-center">Awaiting Agreement<br>[8]</th>
+                                <th class="text-center">Confirm Vehicle Ordered<br>[10]</th>
+                                <th class="text-center active-tab">Confirm Delivery<br>[9]</th>
+                                <th class="text-center">Vehicle Delivered<br>[5]</th>
+                                <th class="text-center">PIF<br>[2]</th>
+                                <th class="text-center">Awaiting Suspend<br>[1]</th>
+                                <th class="text-center">Delivery Complete<br>[9]</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table class="table">
+                    <table class="table table-delivery">
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
@@ -84,7 +102,6 @@
                     alert("Error " + jGet.status + ": " + jGet.statusText);
                     return;
                 }
-                // console.log(jGet);
                 var delivData = JSON.parse(jGet.responseText);
                 populateTable(delivData);
             });
@@ -105,7 +122,6 @@
             if (dt) {
                 var m = dt.getMonth()+1;
                 if (m < 10) m = "0"+m;
-                console.log(dt);
                 // Reversed for use in date fields on the form
                 return (dt.getFullYear() + "-" + m + "-" + dt.getDate());
             }
@@ -136,11 +152,11 @@
                 htmlInsert +=
                     `
                         <tr>
-                            <th scope="row">
+                            <td>
                                 <a onclick="toggleDetails('#tr${e.quoId}')">
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 </a>
-                            </th>
+                            </td>
                             <td>${longDate(e.quoteDate)}</td>
                             <td>${e.quoId}</td>
                             <td>${e.clientName}</td>
@@ -149,104 +165,84 @@
                             <td>${e.vehicleDescription}</td>
                             <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
                         </tr>
-                        <tr id="tr${e.quoId}" style="display: none;">
+                        <tr class="subform" id="tr${e.quoId}" style="display: table-row;">
                             <td colspan="8">
-                                <div class="row">
-                                    <div class="col"> 
-                                        Order summary
-                                        <hr>
-                                        Confirm Delivery
+                                <div class="row subform-header-row">
+                                    <div class="col" class="subform-heading-upper">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i> Order summary
+                                        <hr style="background-color: black">
+                                        <div class="subform-heading-lower">Confirm Delivery</div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <form class="form-inline">
-                                        <div class="col-5">
+                                <div class="row subform-form-row">
+                                    <form class="form-inline form-delivery">
+                                        <div class="col-5 form-fields-panel">
                                             <div class="form-group row">
                                                 <label for="drivername" class="col-4">Driver Name</label>
-                                                <div class="col-8">
-                                                    <input type="text" required class="form-control" id="drivername" value="${e.driverName}">
-                                                </div>
+                                                <input type="text" required class="col-8 form-control" id="drivername" value="${e.driverName}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="delivdate" class="col-4">Est. Delivery Date</label>
-                                                <div class="col-8">
-                                                        <input type="date" required class="form-control" id="delivdate" value="${shortDate(e.estDeliveryDate) || ''}">
-                                                </div>
+                                                <input type="date" required class="col-8 form-control" id="delivdate" value="${shortDate(e.estDeliveryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-4">In Stock</label>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="instock" id="instock1" value="No" ${isDelivCheckboxNo}>
-                                                            No
+                                                        <input type="radio" class="form-check-input" name="instock" id="instock1" value="No" ${isDelivCheckboxNo}>No
                                                     </label>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="instock" id="instock2" value="Yes" ${isDelivCheckboxYes}>
-                                                            Yes
+                                                        <input type="radio" class="form-check-input" name="instock" id="instock2" value="Yes" ${isDelivCheckboxYes}>Yes
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-4">Vehicle Delivered</label>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered1" value="No" ${inStockCheckboxNo}>
-                                                            No
+                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered1" value="No" ${inStockCheckboxNo}>No
                                                     </label>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered2" value="Yes" ${inStockCheckboxYes}>
-                                                            Yes
+                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered2" value="Yes" ${inStockCheckboxYes}>Yes
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="regnum" class="col-4">Registration Number</label>
-                                                <div class="col-8">
-                                                        <input type="text" required class="form-control" id="regnum" value="${e.regNumber}">
-                                                </div>
+                                                <input type="text" required class="col-8 form-control" id="regnum" value="${e.regNumber}">
                                             </div>
 
                                             <div class="form-group row">
                                                 <label for="vinnum" class="col-4">Vin Number</label>
-                                                <div class="col-8">
-                                                    <input type="text" required class="form-control" id="vinnum" value="${e.vinNumber}">
-                                                </div>
+                                                <input type="text" required class="col-8 form-control" id="vinnum" value="${e.vinNumber}">
                                             </div>
                                         </div>
 
-                                        <div class="col-5">
+                                        <div class="col-5 form-fields-panel">
                                             <div class="form-group row">
                                                 <label for="regdate" class="col-4">Registration Date</label>
-                                                <div class="col-8">
-                                                    <input type="date" required class="form-control" id="regdate" value="${shortDate(e.regDate) || ''}">
-                                                </div>
+                                                <input type="date" required class="col-8 form-control" id="regdate" value="${shortDate(e.regDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="taxexpdate" class="col-4">Tax Expiry Date</label>
-                                                <div class="col-8">
-                                                    <input type="date" required class="form-control" id="taxexpdate" value="${shortDate(e.taxExpiryDate) || ''}">
-                                                </div>
+                                                <input type="date" required class="col-8 form-control" id="taxexpdate" value="${shortDate(e.taxExpiryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="actdelivdate" class="col-4">Actual Delivery Date</label>
-                                                <div class="col-8">
-                                                    <input type="date" required class="form-control" id="actdeldate" value="${shortDate(e.actualDeliveryDate) || ''}">
-                                                </div>
+                                                <input type="date" required class="col-8 form-control" id="actdeldate" value="${shortDate(e.actualDeliveryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="endcontract" class="col-4">End Of Contract</label>
-                                                <div class="col-8">
-                                                    <input type="date" required class="form-control" id="endcontract" value="${shortDate(e.contractEndDate) || ''}">
-                                                </div>
+                                                <input type="date" required class="col-8 form-control" id="endcontract" value="${shortDate(e.contractEndDate) || ''}">
                                             </div>
                                         </div>
 
-                                        <div class="col-2">
-                                            <button type="submit">Confirm Delivery</button>
+                                        <div class="col-2 form-submit-panel">
+                                            <button type="submit" class="btn-red">Confirm Delivery</button>
                                         </div>
 
                                     </form>

@@ -3,6 +3,11 @@ body {
   font-family: 'Catamaran', sans-serif;
   font-size: 0.8rem; }
 
+div, tr, th, td {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
 .login-bar {
   background-color: black;
   color: white; }
@@ -45,7 +50,6 @@ body {
     padding: 2px 5px;
     background-color: #ddd;
     border: 1px solid #333;
-    font-color: #333;
     font-size: 0.8rem; }
   .search-form .btn {
     font-size: 0.8rem;
@@ -58,3 +62,69 @@ body {
 
 .page-content {
   margin: 0 3vw; }
+
+.table-nav-col {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0; }
+
+.table-nav {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0; }
+  .table-nav th {
+    color: white;
+    background-color: #969696;
+    border-right: 1px solid white;
+    width: 11.11111%; }
+  .table-nav .active-tab {
+    background-color: #db052c; }
+
+.table-delivery th {
+  color: white;
+  background-color: #db052c; }
+.table-delivery th:not(:first-child) {
+  border-right: 1px solid white; }
+.table-delivery tr {
+  background-color: #e3e3e3; }
+.table-delivery .subform {
+  background-color: #fbfbfb; }
+.table-delivery .subform-header-row {
+  padding: 0 2vw; }
+.table-delivery .subform-heading-upper {
+  font-weight: bold; }
+.table-delivery .subform-heading-lower {
+  font-size: 1.2em;
+  color: white;
+  background-color: #db052c;
+  padding: 10px 15px; }
+.table-delivery .subform-form-row {
+  padding: 0 2vw 0 4vw; }
+.table-delivery .form-fields-panel {
+  height: 100%;
+  align-items: flex-start; }
+.table-delivery .form-submit-panel {
+  display: flex;
+  height: 100%;
+  align-items: flex-end; }
+
+.form-delivery {
+  width: 100%; }
+  .form-delivery .form-control {
+    background-color: #eeeeee;
+    padding: 3px 5px;
+    margin: 5px 0;
+    font-size: 0.8rem;
+    border: 0;
+    border-radius: 0; }
+  .form-delivery .form-check-label {
+    min-height: 15px;
+    min-width: 30px;
+    padding: 3px 0;
+    margin: 3px 0; }
+
+.btn-red {
+  background-color: #db052c;
+  color: white;
+  border: 0;
+  border-radius: 5px; }
