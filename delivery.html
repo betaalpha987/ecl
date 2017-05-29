@@ -224,6 +224,12 @@
                 
                 e.quoteDate = new Date(e.quoteDate);
                 e.statusDate = new Date(e.statusDate);
+                
+                var isDelivCheckboxYes = e.isDelivered === true? "checked" : "";
+                var isDelivCheckboxNo = e.isDelivered !== true? "checked" : "";
+                var inStockCheckboxYes = e.isDelivered === true? "checked" : "";
+                var inStockCheckboxNo = e.isDelivered !== true? "checked" : "";
+
                 htmlInsert +=
                     `
                         <tr>
@@ -255,26 +261,26 @@
                                             <div class="form-group row">
                                                 <label for="drivername" class="col-4">Driver Name</label>
                                                 <div class="col-8">
-                                                    <input type="text" required class="form-control" id="drivername">
+                                                    <input type="text" required class="form-control" id="drivername" value="${e.driverName}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="delivdate" class="col-4">Est. Delivery Date</label>
                                                 <div class="col-8">
-                                                        <input type="date" required class="form-control" id="delivdate">
+                                                        <input type="date" required class="form-control" id="delivdate" value="${e.deliveryDate}">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-4">In Stock</label>
                                                 <div class="col-2">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="instock" id="instock1" value="No" checked>
+                                                        <input type="radio" class="form-check-input" name="instock" id="instock1" value="No" ${isDelivCheckboxNo}>
                                                             No
                                                     </label>
                                                 </div>
                                                 <div class="col-2">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="instock" id="instock2" value="Yes">
+                                                        <input type="radio" class="form-check-input" name="instock" id="instock2" value="Yes" ${isDelivCheckboxYes}>
                                                             Yes
                                                     </label>
                                                 </div>
@@ -283,13 +289,13 @@
                                                 <label class="col-4">Vehicle Delivered</label>
                                                 <div class="col-2">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered1" value="No" checked>
+                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered1" value="No" ${inStockCheckboxNo}>
                                                             No
                                                     </label>
                                                 </div>
                                                 <div class="col-2">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered2" value="Yes">
+                                                        <input type="radio" class="form-check-input" name="delivered" id="delivered2" value="Yes" ${inStockCheckboxYes}>
                                                             Yes
                                                     </label>
                                                 </div>

@@ -17,7 +17,9 @@
     "regNumber": "No Registration Number",
     "contractStartDate": null,
     "contractEndDate": null,
-    "quotationdate": "2016-05-05T00:00:00+01:00"
+    "quotationdate": "2016-05-05T00:00:00+01:00",
+    "inStock": true,
+    "isDelivered": true
 },
 {
     "clientId": 1,
