@@ -198,7 +198,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="delivdate" class="col-4">Est. Delivery Date</label>
-                                                <input type="date" required class="col-8 form-control" id="delivdate" value="${shortDate(e.estDeliveryDate) || ''}">
+                                                <input type="date" class="col-8 form-control" id="delivdate" value="${shortDate(e.estDeliveryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-4">In Stock</label>
@@ -228,31 +228,31 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="regnum" class="col-4">Registration Number</label>
-                                                <input type="text" required class="col-8 form-control" id="regnum" value="${e.regNumber}">
+                                                <input type="text" required class="col-8 form-control" id="regnum" value="${e.regNumber}" pattern="[^a-z ]+" title="Registration number should not include lowercase letters or spaces.">
                                             </div>
 
                                             <div class="form-group row">
                                                 <label for="vinnum" class="col-4">Vin Number</label>
-                                                <input type="text" required class="col-8 form-control" id="vinnum" value="${e.vinNumber}">
+                                                <input type="text" class="col-8 form-control" id="vinnum" value="${e.vinNumber}" pattern="[a-zA-Z0-9]{15,15}" title="VIN number must be alphanumeric and 15 characters long.">
                                             </div>
                                         </div>
 
                                         <div class="col-5 form-fields-panel">
                                             <div class="form-group row">
                                                 <label for="regdate" class="col-4">Registration Date</label>
-                                                <input type="date" required class="col-8 form-control" id="regdate" value="${shortDate(e.regDate) || ''}">
+                                                <input type="date" class="col-8 form-control" id="regdate" value="${shortDate(e.regDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="taxexpdate" class="col-4">Tax Expiry Date</label>
-                                                <input type="date" required class="col-8 form-control" id="taxexpdate" value="${shortDate(e.taxExpiryDate) || ''}">
+                                                <input type="date" class="col-8 form-control" id="taxexpdate" value="${shortDate(e.taxExpiryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="actdelivdate" class="col-4">Actual Delivery Date</label>
-                                                <input type="date" required class="col-8 form-control" id="actdeldate" value="${shortDate(e.actualDeliveryDate) || ''}">
+                                                <input type="date" class="col-8 form-control" id="actdeldate" value="${shortDate(e.actualDeliveryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="endcontract" class="col-4">End Of Contract</label>
-                                                <input type="date" required class="col-8 form-control" id="endcontract" value="${shortDate(e.contractEndDate) || ''}">
+                                                <input type="date" class="col-8 form-control" id="endcontract" value="${shortDate(e.contractEndDate) || ''}">
                                             </div>
                                         </div>
 
