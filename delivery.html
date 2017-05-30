@@ -123,8 +123,19 @@
 
 
         function toggleDetails(id) {
-            trDetails = $(id);
-            trDetails.css("display", trDetails.css("display") === "none" ? "table-row" : "none" ); 
+            var trDetails = $("#tr"+id);
+            var faDetails = $("#fa"+id);
+            if (trDetails.css("display") === "none") {
+                console.log("yup");
+                faDetails.removeClass("fa-plus-circle");
+                faDetails.addClass("fa-minus-circle");
+            } else {
+                console.log("nope");
+                faDetails.removeClass("fa-minus-circle");
+                faDetails.addClass("fa-plus-circle");
+            }
+            trDetails.css("display", trDetails.css("display") === "none" ? "table-row" : "none" );
+
         }
 
         function longDate(dt) {
@@ -168,8 +179,8 @@
                     `
                         <tr>
                             <td>
-                                <a onclick="toggleDetails('#tr${e.quoId}')" style="cursor: pointer">
-                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                <a onclick="toggleDetails('${e.quoId}')" style="cursor: pointer">
+                                    <i class="fa fa-plus-circle" aria-hidden="true" id="fa${e.quoId}"></i>
                                 </a>
                             </td>
                             <td>${longDate(e.quoteDate)}</td>
