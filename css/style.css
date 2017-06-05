@@ -8,6 +8,10 @@ div, tr, th, td {
   margin: 0;
   border: 0; }
 
+.container {
+  max-width: 1700px;
+  width: 100%; }
+
 .login-bar {
   background-color: black;
   color: white; }

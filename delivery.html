@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Car Benefit Solutions: Task Management</title>
+    <title>Excel Car Leasing: Task Management</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,14 +19,14 @@
 
 </head>
 <body>
-        <div class="container-fluid">    
+        <div class="container">    
             <div class="row">
-                <div class="col-sm-12 login-bar">
+                <div class="col-12 login-bar">
                     <a class="float-right" href ="#">Log in</a><a class="float-right" href ="#">Register</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 site-nav-bar">
+                <div class="col-12 site-nav-bar">
                     <a href="#"><img src="images/logo.png" width="158px"/></a>
                     <a class="nav-item current" href="#">Your Scheme</a>
                     <a class="nav-item other" href="#">Your Vehicle</a>
@@ -34,9 +34,8 @@
                 </div>
             </div>
 
-            </div>
             <div class="row">
-                <div class="col-sm-12 top-banner">
+                <div class="col-12 top-banner">
                     <div class="banner-text">
                         <h1>Task Management</h1>
                     </div>               
@@ -44,7 +43,7 @@
             </div>
             <div class="page-content">
             <div class="row">
-                <div class="col-sm-12"> 
+                <div class="col-12"> 
                     <form class="search-form form-inline">
                         <input class="form-control" type="text" placeholder="Search">
                         <button class="btn btn-link" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -52,7 +51,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 table-nav-col">
+                <div class="col-12 table-nav-col">
                     <table class="table table-nav">
                         <thead>
                             <tr>
@@ -71,7 +70,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-12">
                     <table class="table table-delivery">
                         <thead>
                             <tr>
@@ -82,7 +81,6 @@
                                 <th>Name</th>
                                 <th>Registration Number</th>
                                 <th>Vehicle</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="delivTable">
@@ -189,10 +187,9 @@
                             <td>${e.driverName}</td>
                             <td>${e.regNumber}</td>
                             <td>${e.vehicleDescription}</td>
-                            <td><i class="fa fa-cog" aria-hidden="true"></i><i class="fa fa-angle-down" aria-hidden="true"></i></td>
                         </tr>
                         <tr class="subform" id="tr${e.quoId}" style="display: none;">
-                            <td colspan="8">
+                            <td colspan="7">
                                 <div class="row subform-header-row">
                                     <div class="col" class="subform-heading-upper">
                                         <i class="fa fa-plus-circle" aria-hidden="true"></i> Order summary
