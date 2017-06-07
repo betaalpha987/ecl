@@ -177,7 +177,7 @@
                     `
                         <tr>
                             <td>
-                                <a onclick="toggleDetails('${e.quoId}')" style="cursor: pointer">
+                                <a class="a-expand" onclick="toggleDetails('${e.quoId}')">
                                     <i class="fa fa-plus-circle" aria-hidden="true" id="fa${e.quoId}"></i>
                                 </a>
                             </td>
@@ -192,8 +192,6 @@
                             <td colspan="7">
                                 <div class="row subform-header-row">
                                     <div class="col" class="subform-heading-upper">
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i> Order summary
-                                        <hr style="background-color: black">
                                         <div class="subform-heading-lower">Confirm Delivery</div>
                                     </div>
                                 </div>
@@ -203,10 +201,6 @@
                                             <div class="form-group row">
                                                 <label for="drivername" class="col-4">Driver Name</label>
                                                 <input type="text" required class="col-8 form-control" id="drivername" value="${e.driverName}">
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="delivdate" class="col-4">Est. Delivery Date</label>
-                                                <input type="date" class="col-8 form-control" id="delivdate" value="${shortDate(e.estDeliveryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-4">In Stock</label>
@@ -253,6 +247,10 @@
                                             <div class="form-group row">
                                                 <label for="taxexpdate" class="col-4">Tax Expiry Date</label>
                                                 <input type="date" class="col-8 form-control" id="taxexpdate" value="${shortDate(e.taxExpiryDate) || ''}">
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="delivdate" class="col-4">Est. Delivery Date</label>
+                                                <input type="date" class="col-8 form-control" id="delivdate" value="${shortDate(e.estDeliveryDate) || ''}">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="actdelivdate" class="col-4">Actual Delivery Date</label>

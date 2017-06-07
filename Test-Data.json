@@ -1,6 +1,7 @@
  [
 
 {
+    "vinNumber": "1FTRX12545KE19868",
     "clientId": 98,
     "clientName": "Audi Centre Car Scheme",
     "costCentreName": "Aberdeen Audi",
@@ -14,12 +15,13 @@
     "statusName": "Part A to be signed final (E)",
     "statusTypeId": 80,
     "statusDate": "2015-07-08T00:00:00+01:00",
-    "regNumber": "No Registration Number",
+    "regNumber": "ULW978",
     "contractStartDate": null,
     "contractEndDate": null,
     "quotationdate": "2016-05-05T00:00:00+01:00"
 },
 {
+    "vinNumber": "1XKWD29XXHS574510",
     "clientId": 1,
     "clientName": "Audi Centre Car Scheme",
     "costCentreName": "Aberdeen Audi",
@@ -33,12 +35,14 @@
     "statusName": "Part A to be signed final (E)",
     "statusTypeId": 80,
     "statusDate": "2015-07-08T00:00:00+01:00",
-    "regNumber": "No Registration Number",
+    "regNumber": "AFGUYJ",
     "contractStartDate": null,
     "contractEndDate": null,
     "quotationdate": "2016-05-06T00:00:00+01:00"
+
 },
 {
+    "vinNumber": "2G61S5S39F9130086",
     "clientId": 1,
     "clientName": "Audi Centre Car Scheme",
     "costCentreName": "Aberdeen Audi",
@@ -61,8 +65,7 @@
     "actualDeliveryDate": "2016-05-11T00:00:00+01:00",
     "taxExpiryDate": "2017-05-11T00:00:00+01:00",
     "inStock": true,
-    "isDelivered": true,
-    "vinNumber": "A545B55CR355Z5L"
+    "isDelivered": true
 }
 
 ]

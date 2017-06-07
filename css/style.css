@@ -67,6 +67,10 @@ div, tr, th, td {
 .page-content {
   margin: 0 3vw; }
 
+.a-expand {
+  cursor: pointer;
+  font-size: 1.3rem; }
+
 .table-nav-col {
   border-bottom: 0;
   padding-bottom: 0;
@@ -96,6 +100,8 @@ div, tr, th, td {
   border-right: 1px solid white; }
 .table-delivery tr {
   background-color: #e3e3e3; }
+.table-delivery td {
+  padding: 8px; }
 .table-delivery .subform {
   background-color: #fbfbfb; }
 .table-delivery .subform-header-row {
